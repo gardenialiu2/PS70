@@ -2,7 +2,7 @@ body {
     font: 20px "Gill Sans", Verdana, sans-serif;
     line-height: 1.8;
     color: #000000;
-    background-color: #dcdcdc;
+    background-color: #ffebf2; /* Light pink background */
     padding-top: 0px !important;
   }
 
@@ -14,7 +14,7 @@ p {font-size: 16px;}
 .margin {margin-bottom: 30px;}
 
 a {
-  color: #000000;
+  color: #2e8b57; /* Sea green for links */
 }
 
 .container-fluid {
@@ -23,9 +23,9 @@ a {
 }
 
 nav {
-  background-color: #dcdcdc;
+  background-color: #ffffff; /* White navbar */
   padding: 20px 0px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(46,139,87,0.2); /* Green shadow */
 }
 
 .container-fluid {
@@ -42,7 +42,7 @@ nav {
 
 .nav-title {
   margin: 0;
-  color: #333;
+  color: #2e8b57; /* Sea green for title */
   font-weight: 500;
   letter-spacing: 0.5px;
 }
@@ -54,7 +54,7 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  color: #333;
+  color: #2e8b57; /* Sea green for links */
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 4px;
@@ -62,16 +62,16 @@ nav {
 }
 
 .nav-link:hover {
-  background-color: rgba(0,0,0,0.05);
-  color: #000;
+  background-color: rgba(46,139,87,0.1); /* Light green background on hover */
+  color: #2e8b57; /* Sea green */
 }
 
 #btn {
   border: 3px outset #FFFFFF;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
-  color: #000000;
+  background-color: #2e8b57; /* Sea green background */
+  color: #FFFFFF; /* White text */
   transition: 0.3s;
 }
 
@@ -79,7 +79,7 @@ nav {
   border: 3px inset #FFFFFF;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #3cb371; /* Medium sea green - lighter on hover */
   transition: 0.3s;
 }
 
