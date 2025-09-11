@@ -124,3 +124,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #e87a9e;
   font-weight: 600;
 }
+
+.btn-pink-outline {
+  color: #e87a9e !important;
+  border-color: #e87a9e !important;
+}
+
+.btn-pink-outline:hover {
+  background-color: #e87a9e !important;
+  color: white !important;
+}
