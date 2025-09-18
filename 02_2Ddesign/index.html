@@ -1,56 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<title>gardenia's ps70 documentation</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
-
-
-<nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h2 class="nav-title">ps70 fall 2025</h2>
-    </div>
-    <div class="navbar-links">
-      <a class="nav-link" href="../index.html">home</a>
-      <a class="nav-link" href="../about.html">about</a>
-      <a class="nav-link" href="../13_finalproject/index.html">final project</a>
-    </div>
-  </div>
-</nav>
-
+<head>
+  <title>gardenia's ps70 documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    .textcontainer {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+    
+    .textcontainer p {
+      font-size: 20px;
+      line-height: 1.8;
+      color: inherit;
+    }
+    
+    .textcontainer h3, .textcontainer h4 {
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-size: 24px;
+      color: #e87a9e;
+    }
+    
+    .textcontainer h5 {
+      font-size: 20px;
+      color: #e87a9e;
+    }
+    
+    .carousel-container {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    
+    .carousel-inner img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+</head>
 <body>
-<xmp style="display:none;">
-<div class="textcontainer">
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2 class="nav-title">ps70 fall 2025</h2>
+      </div>
+      <div class="navbar-links">
+        <a class="nav-link" href="../index.html">home</a>
+        <a class="nav-link" href="../about.html">about</a>
+        <a class="nav-link" href="../13_finalproject/index.html">final project</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="textcontainer">
 <p class="margin">   </p>
 
-<h3>Week 2: 2D Design & Cutting</h3>
+<h3>week 2: 2D design & cutting</h3>
+
+<h4>assignment 1: make a box</h4>
+the goal of this assignment is to get familiar with fusion 360 and how to use it to create a 2D design.
+i created a box with teeth to connect the sides. after modeling the structure and laser cutting it to ensure
+the dimensions were correct, i added some more details. i added many little cutouts onto the sides and also 
+my name on the front. below is my final design. 
+
+
+<div class="carousel-container">
+  <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="col-md-6">
+      <h5 class="text-center">initial box designs</h5>
+      <div id="boxCarousel1" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#boxCarousel1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Box design 1"></button>
+          <button type="button" data-bs-target="#boxCarousel1" data-bs-slide-to="1" aria-label="Box design 2"></button>
+          <button type="button" data-bs-target="#boxCarousel1" data-bs-slide-to="2" aria-label="Box design 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="box.png" class="d-block w-100" alt="box design 1">
+          </div>
+          <div class="carousel-item">
+            <img src="box1.png" class="d-block w-100" alt="box design 2">
+          </div>
+          <div class="carousel-item">
+            <img src="box2.png" class="d-block w-100" alt="box design 3">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#boxCarousel1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#boxCarousel1" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <h5 class="text-center">final box designs</h5>
+      <div id="boxCarousel2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#boxCarousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Box design 4"></button>
+          <button type="button" data-bs-target="#boxCarousel2" data-bs-slide-to="1" aria-label="Box design 5"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="box3.png" class="d-block w-100" alt="box design 4">
+          </div>
+          <div class="carousel-item">
+            <img src="box4.png" class="d-block w-100" alt="box design 5">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#boxCarousel2" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#boxCarousel2" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+my box design features four wall panels and one bottom, connected by scoring and folding the cardboard. 
+"gardenia" is engraved onto one of the front walls, and the sides feature stars and cutout patterns. 
 
 <p class="margin">   </p>
 <div class="flexrow">
-  <a id="btn" href="./temp.zip" download>Test Download Button
-  </a>
+  <a class="btn-download" href="./gbox.dxf" download>download box design (dxf)</a>
 </div>
 <p class="margin">   </p>
 
-<h4>Assignment 1: Make a Box</h4>
+<br></br>
+<h4>assignment 2: fusion 360 tutorial</h4>
+for this assignment, i chose to follow <a href="https://www.youtube.com/watch?v=tz29TlRAcQk">this flower tutorial</a>, 
+since my final project will probably incorporate flowers of some sort.
 
-
-
-<h4>Assignment 2: Fusion 360 Tutorial</h4>
-
-
-<h4>Assignment 3: Fusion Modeling</h4>
-
-
-
-
-
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+  <div class="col-md-4">
+    <img src="flower2.png" alt="flower design 1" class="img-fluid">
+  </div>
+  <div class="col-md-4">
+    <img src="flower.png" alt="flower design 2" class="img-fluid">
+  </div>
+  <div class="col-md-4">
+    <img src="flower3.png" alt="flower design 3" class="img-fluid">
+  </div>
 </div>
-</xmp>
+
+<p class="margin">   </p>
+<div class="flexrow">
+  <a class="btn-download" href="./flower.f3d" download>download flower design (f3d)</a>
+</div>
+<p class="margin">   </p>
+
+<br></br>
+
+<h4>assignment 3: fusion modeling</h4>
+
+
+
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
 </html>

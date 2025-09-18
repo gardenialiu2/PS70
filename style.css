@@ -72,21 +72,26 @@ nav .container-fluid {
   color: #2e8b57;
 }
 
-#btn {
-  border: 3px outset #FFFFFF;
-  border-radius: 40px;
-  padding: 10px 30px;
-  background-color: #2e8b57;
-  color: #FFFFFF;
-  transition: 0.3s;
+.btn-download {
+  border: 2px solid #e87a9e;
+  border-radius: 30px;
+  padding: 12px 30px;
+  background-color: transparent;
+  color: #e87a9e;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgba(232, 122, 158, 0.1);
 }
 
-#btn:hover {
-  border: 3px inset #FFFFFF;
-  border-radius: 40px;
-  padding: 10px 30px;
-  background-color: #3cb371;
-  transition: 0.3s;
+.btn-download:hover {
+  background-color: #e87a9e;
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 122, 158, 0.2);
 }
 
 .row {
