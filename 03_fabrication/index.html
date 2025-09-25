@@ -1,60 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<title>gardenia's ps70 documentation</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
-
-
-<nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h2 class="nav-title">ps70 fall 2025</h2>
-    </div>
-    <div class="navbar-links">
-      <a class="nav-link" href="../index.html">home</a>
-      <a class="nav-link" href="../about.html">about</a>
-      <a class="nav-link" href="../13_finalproject/index.html">final project</a>
-    </div>
-  </div>
-</nav>
-
+<head>
+  <title>gardenia's ps70 documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+</head>
 <body>
-<xmp style="display:none;">
-<div class="textcontainer">
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2 class="nav-title">ps70 fall 2025</h2>
+      </div>
+      <div class="navbar-links">
+        <a class="nav-link" href="../index.html">home</a>
+        <a class="nav-link" href="../about.html">about</a>
+        <a class="nav-link" href="../13_finalproject/index.html">final project</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="textcontainer">
 <p class="margin">   </p>
 
 <h3>week 3: hand tools and fabrication</h3>
 
-<h4>final kinetic sculpture (blooming flower)</h4>
+<h4>final kinetic sculpture (spinning waterlily)</h4>
+
+
 <h4>process</h4>
-i began by sketching out some ideas for the flower shape and how it should move.
-i took inspiration from this video of a swing. based off this, it seemed like a similar
-mechanism could allow the flower petal to move back and forth. i went through a couple iterations, 
-shown below. 
-<br></br>
-then, i designed the component in fusion 360 to be laser cut. i wanted a simple shape to latch onto the 
-spinning part of the motor, so i measured the dimensions of the shape and put that in fusion 360. since
-i was unsure how the cardboard kerf would affect the final dimensions and i needed the cutout to fit
-very tightly, i laser cut a couple prototypes to check the dimensions. i also started out with TODO mm 
-cardboard. i realized that the laser would burn through part of the cardboard hole and the cardboard
-was too flimsy, so i opted for 6mm cardboard instead. 
-<br></br>
-once i had some prototypes, i played around with how the petal should move. i decided to use a thin wire
-to connect the petal to the spinning part of the motor. i then added a cutout in the base of the petal's stem
-so that the wire could fit through.
-, but eventually opted for 6mm for more structure. 
-<br></br>
-
-
-
-
+<p>i went through many phases of brainstorming for this before i finally decided on this current iteration.
+for this final sculpture, i modeled it after a flower windmill, where spinning would create an optical 
+illusion that the flower was full.</p>
+<div class="center-row">
+  <img src="inspo1.jpg" alt="inspiration for the kinetic sculpture" style="width:60%; margin:20px 0;">
 
 </div>
-</xmp>
+
+
+<p>this sculpture has a few main parts: the platform that the motor sits on, the rod that the motor connects to, 
+and the petals of the flower. i decided to keep the base pretty simple. i cut out a box that fits the motor
+and added additional pieces to make it look like the lily pad and leaves of a waterlily. for the motor and rod connection,
+i opted for a triangular stand that would fold up around the rod. as for the flower, i made cut out thin petals
+and a pistil to fit around the rod.</p>
+
+
+<div class="center-row">
+  <div style="width:70%; text-align:center;">
+    <img src="fusion.png" alt="fusion 360 design of the kinetic sculpture" style="width:100%; margin:20px 0;">
+    <p class="caption">fusion 360 design of the kinetic sculpture</p>
+  </div>
+</div>
+
+<p>
+the base is just a box that fits the protruding parts of the motor. this box is attached to a lilypad cutout. 
+then, i used a triangular structure with 3 pieces that fold upwards to secure the rod to the motor. the 
+petals of the flower have a hole cut out in the center so that the rod can fit through. these petal pieces are 
+scored to create a curved shape. 
+</p>
+
+
+<p class="margin">   </p>
+<div class="flexrow">
+  <a class="btn-download" href="kinetic_sculpture.dxf" download>download kinetic sculpture design (dxf)</a>
+</div>
+<p class="margin">   </p>
+
+<p>i was able to reuse some previous designs (later on this page) for connecting to the motor.</p>
+
+<h4>final result</h4>
+<p>here is the final kinetic sculpture in action. the flower petals spin around the central axis, creating an optical illusion of a full flower in bloom.</p>
+
+<div class="flexrow">
+  <div style="width:45%; margin:10px;">
+    <video width="100%" height="auto" controls>
+      <source src="spinning.MOV" type="video/mp4">
+      your browser does not support HTML5 video.
+    </video>
+    <p class="caption">flower spinning - side view</p>
+  </div>
+  <div style="width:45%; margin:10px;">
+    <video width="100%" height="auto" controls>
+      <source src="spinning2.MOV" type="video/mp4">
+      your browser does not support HTML5 video.
+    </video>
+    <p class="caption">flower spinning - top view</p>
+  </div>
+</div>
+
+
+<h4>previous idea</h4>
+<p>i wanted to create a flower that could open and close. i began by sketching out some ideas for the flower 
+shape and how it should move. my brainstorming is shown below:</p>
+
+<div class="center-row">
+  <img src="inspo2.jpg" alt="inspiration for the kinetic sculpture" style="width:60%; margin:20px 0;">
+</div>
+
+<p>then, i designed the component in fusion 360 to be laser cut. i wanted a simple shape to latch onto the 
+spinning part of the motor, so i measured the dimensions of the shape and put that in fusion 360. since
+i was unsure how the cardboard kerf would affect the final dimensions and i needed the cutout to fit
+very tightly, i laser cut a couple prototypes to check the dimensions.</p>
+
+
+<p>i also started out with 3mm cardboard but soon i realized that the laser would burn through part of the cardboard hole and the cardboard
+was too flimsy, so i opted for 6mm cardboard instead.</p>
+
+<p>once i had some prototypes, i played around with how the petal should move. i decided to use a thin wire
+to connect the petal to the spinning part of the motor. i then added a cutout in the base of the petal's stem
+so that the wire could fit through.</p>
+
+<p>i eventually also cut out multiple metals to create the flower, where the goal was to have 2 petals 
+be connected to the motor and move back and forth. by positioning these petals over the other petals, i hoped
+that the other petals would also move back and forth, simulating how the whole flower would open and close.
+however, i ran into some issues with the cardboard being too sturdy for the wire to move it, as shown in the 
+video on the right.</p>
+
+<div class="flexrow">
+  <div style="width:45%; margin:10px;">
+    <video width="100%" height="auto" controls>
+      <source src="vid1.mov" type="video/mp4">
+      your browser does not support HTML5 video.
+    </video>
+    <p class="caption">initial petal movement</p>
+  </div>
+  <div style="width:45%; margin:10px;">
+    <video width="100%" height="auto" controls>
+      <source src="vid2.mov" type="video/mp4">
+      your browser does not support HTML5 video.
+    </video>
+    <p class="caption">full petal movement</p>
+  </div>
+</div>
+
+<h4>learnings & challenges</h4>
+<ul>
+  <li>
+    the motor had many different protruding parts => print multiple iterations
+  </li>
+  <li>
+    kerf affected the final dimensions => measure multiple times
+  </li>
+  <li>
+    3mm cardboard was too thin + laser burned through => use 6mm cardboard
+  </li>
+</ul>
+
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
 </html>

@@ -7,10 +7,18 @@ body {
   }
 
 .textcontainer {
-  padding: 2% 10%;;
+  padding: 2% 10%;
+  font-size: 20px;
+  line-height: 1.8;
 }
 
-p {font-size: 16px;}
+.textcontainer p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: inherit;
+}
+
+p {font-size: 20px;}
 .margin {margin-bottom: 30px;}
 
 a {
@@ -116,7 +124,7 @@ code {
 
 .caption {
   color: gray;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   font-style: italic;
 }
@@ -130,6 +138,18 @@ code {
 h1, h2, h3, h4, h5, h6 {
   color: #e87a9e;
   font-weight: 600;
+}
+
+.textcontainer h3, .textcontainer h4 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #e87a9e;
+}
+
+.textcontainer h5 {
+  font-size: 20px;
+  color: #e87a9e;
 }
 
 .btn-pink-outline {
