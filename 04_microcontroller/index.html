@@ -1,42 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<title>gardenia's ps70 documentation</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
-
-
-<nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h2 class="nav-title">ps70 fall 2025</h2>
-    </div>
-    <div class="navbar-links">
-      <a class="nav-link" href="../index.html">home</a>
-      <a class="nav-link" href="../about.html">about</a>
-      <a class="nav-link" href="../13_finalproject/index.html">final project</a>
-    </div>
-  </div>
-</nav>
-
+<head>
+  <title>gardenia's ps70 documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+</head>
 <body>
-<xmp style="display:none;">
-<div class="textcontainer">
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2 class="nav-title">ps70 fall 2025</h2>
+      </div>
+      <div class="navbar-links">
+        <a class="nav-link" href="../index.html">home</a>
+        <a class="nav-link" href="../about.html">about</a>
+        <a class="nav-link" href="../13_finalproject/index.html">final project</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="textcontainer">
 <p class="margin">   </p>
 
-<h3>Week 4: Microcontroller Programming</h3>
+<h3>week 4: microcontroller programming</h3>
 
-<h4>[Do Something with an arduino]</h4>
+<p>i decided to program a servo motor, similar to how we did in class. i had issues with connections, but 
+  i was able to debug it by changing to a different ESP32. after getting the servo code to work, i designed and 
+  laser cut 2 half-flowers, which i then connected to the servo motor. i decided to use a similar scoring technique 
+  as in week 3 to make the flower petals curve. i added a long stem with a cutout so that the servo motor could 
+  connect to the flower. when the servo motor spins, the flower does too. 
+</p>
 
+<h4>servo motor setup</h4>
 
-
-
-
+<div class="flexrow">
+  <div style="width:30%; margin:10px;">
+    <img src="serv3.png" alt="Servo motor setup - view 1" style="width:100%; margin-bottom:10px;">
+    <p class="caption">measuring</p>
+  </div>
+  <div style="width:30%; margin:10px;">
+    <img src="serv2.png" alt="Servo motor setup - view 2" style="width:100%; margin-bottom:10px;">
+    <p class="caption">circuit setup</p>
+  </div>
+  <div style="width:30%; margin:10px;">
+    <img src="serv1.png" alt="Servo motor setup - view 3" style="width:100%; margin-bottom:10px;">
+    <p class="caption">final assembly</p>
+  </div>
 </div>
-</xmp>
+
+<h4>servo in action</h4>
+<div class="center-row">
+  <div style="width:40%; margin:10px;">
+    <video width="100%" height="auto" controls>
+      <source src="servo.MOV" type="video/mp4">
+      your browser does not support HTML5 video.
+    </video>
+    <p class="caption">servo motor spinning the flower</p>
+  </div>
+</div>
+
+
+<p>my code is shown below:</p>
+<div class="code-block">#include &lt;ESP32Servo.h&gt;
+
+Servo myservo;  // create servo object to control a servo
+
+int pos = 0;    // variable to store the servo position
+
+void setup() {
+  myservo.attach(18);  // attaches the servo on pin 9 to the servo object
+}
+
+void loop() {
+  for (pos = 0; pos &lt;= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+  myservo.write(0);                    // send the servo back to 0
+  delay(1000);                        // give it enough time to make it there
+}
+</div>
+
+<p>
+  i'm thinking that for my final project, i could incorporate spinning flowers like this onto the dress. 
+  it would be interesting to have flowers spinning in different directions on the dress and program them in a way 
+  so that they spin at different times and create some sort of optical illusion / wave-like effect. i think this
+  project was a good start. i still have to think about if i would want to use servo motors in the flower or some other
+  type of motor that allows a full rotation.
+</p>
+
+<h4>reflection</h4>
+<ul>
+  <li>
+    i had issues with connections => debugged by changing to a different ESP32
+  </li>
+  <li>
+    thinking about how i could program many of these flowers for my final project... would they all connect to the same ESP32? 
+  </li>
+  <li>
+    servo motors vs other motors?
+  </li>
+</ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
 </html>

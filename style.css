@@ -122,6 +122,19 @@ code {
   font-family: 'Courier New', Courier, monospace;
 }
 
+.code-block {
+  background-color: #f8f9fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  overflow: auto;
+  padding: 16px;
+  white-space: pre;
+}
+
 .caption {
   color: gray;
   font-size: 20px;
