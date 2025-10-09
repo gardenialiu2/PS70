@@ -1,39 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<title>gardenia's ps70 documentation</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
-
-
-<nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h2 class="nav-title">ps70 fall 2025</h2>
-    </div>
-    <div class="navbar-links">
-      <a class="nav-link" href="../index.html">home</a>
-      <a class="nav-link" href="../about.html">about</a>
-      <a class="nav-link" href="../13_finalproject/index.html">final project</a>
-    </div>
-  </div>
-</nav>
-
+<head>
+  <title>gardenia's ps70 documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+</head>
 <body>
-<xmp style="display:none;">
-<div class="textcontainer">
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2 class="nav-title">ps70 fall 2025</h2>
+      </div>
+      <div class="navbar-links">
+        <a class="nav-link" href="../index.html">home</a>
+        <a class="nav-link" href="../about.html">about</a>
+        <a class="nav-link" href="../13_finalproject/index.html">final project</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="textcontainer">
 <p class="margin">   </p>
 
-<h3>Week 5: 3D Design & Printing</h3>
+<h3>week 5: 3D Design & Printing</h3>
 
-<h4>Assignment: Model and 3D print something</h4>
+<h4>assignment: model and 3D print something</h4>
 
-
+<div class="center-row">
+  <img src="all_fabric.png" alt="All fabric samples" style="width:70%; margin:20px 0;">
 </div>
-</xmp>
+<p class="caption">different infill patterns</p>
+
+<p>i decided to take this week to figure out wheat infill pattern i want for the 3d printed fabric
+portion of my dress. for this initial print, i wasn't able to use the more flexible 3d printer filament, 
+so my tests were only done with PLA filament. some of my initial prints were too thin which made 
+it hard for the printer to completely print the pattern successfully. however, after changing the thickness
+i got a couple successful prints. the infill patterns i tried were rectilinear, stars, and hilbert curve.
+
+<br>
+out of these, i like the stars the best. i really liked the hilbert curve pattern, but the infill wasn't 
+fully connected so it wouldn't have made good fabric. 
+</p>
+
+<div class="flexrow">
+  <div style="width:45%; margin:10px;">
+    <img src="fail_print.png" alt="Failed 3D print attempt" style="width:100%; margin-bottom:10px;">
+    <p class="caption">failed print - too thin</p>
+  </div>
+  <div style="width:45%; margin:10px;">
+    <img src="fail_fabric.png" alt="Failed fabric pattern" style="width:100%; margin-bottom:10px;">
+    <p class="caption"> hilbert curve fabric pattern</p>
+  </div>
+</div>
+
+<div class="flexrow">
+  <a class="btn-download" href="fabric_pattern.stl" download>download 3D fabric pattern (stl)</a>
+</div>
+<p class="margin">   </p>
+
+<p>out of these i liked the stars pattern the best, but i will continue playing around with the different 
+infill patterns to see which one i like the most when flexible filament is used.</p>
+
+<h4>3D scanning</h4>
+<p>i also experimented with 3D scanning using the revopoint scanner. i scanned my face but wasn't able to capture my hair.</p>
+
+<div class="center-row">
+  <img src="scan.png" alt="3D scan" style="width:70%; margin:20px 0;">
+</div>
+<p class="caption">3D scan</p>
+
+<div class="flexrow">
+  <a class="btn-download" href="scan.stl" download>download 3D scan (stl)</a>
+</div>
+<p class="margin">   </p>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
 </html>

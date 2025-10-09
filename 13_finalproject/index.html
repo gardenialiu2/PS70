@@ -1,38 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<title>gardenia's ps70 documentation</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
-
-
-<nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h2 class="nav-title">ps70 fall 2025</h2>
-    </div>
-    <div class="navbar-links">
-      <a class="nav-link" href="../index.html">home</a>
-      <a class="nav-link" href="../about.html">about</a>
-      <a class="nav-link" href="../13_finalproject/index.html">final project</a>
-    </div>
-  </div>
-</nav>
-
-
+<head>
+  <title>gardenia's ps70 documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+</head>
 <body>
-<xmp style="display:none;">
-<div class="textcontainer">
-<p class="margin"></p>
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2 class="nav-title">ps70 fall 2025</h2>
+      </div>
+      <div class="navbar-links">
+        <a class="nav-link" href="../index.html">home</a>
+        <a class="nav-link" href="../about.html">about</a>
+        <a class="nav-link" href="../13_finalproject/index.html">final project</a>
+      </div>
+    </div>
+  </nav>
 
-<h3>Final Project: [INSERT FINAL PROJECT HERE]</h3>
+  <div class="textcontainer">
+    <p class="margin">   </p>
 
+    <h3>final project: interactive flower dress</h3>
 
-</div>
-</xmp>
+    <h4>project overview</h4>
+    <p>i've designed a dress that incorporates 3D printed elements and servo-controlled petals. the dress consists of a 3D printed top and a skirt with interactive flower petals. the flower petals will be controlled by servo motors, creating movement and interactivity in the garment.</p>
+    
+    <h4>design</h4>
+    <div class="flexrow">
+      <div style="width:45%; margin:10px;">
+        <img src="dress1.png" alt="Full dress design" style="width:100%; margin-bottom:10px;">
+        <p class="caption">full dress design</p>
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="dress_top.png" alt="3D printed top design" style="width:100%; margin-bottom:10px;">
+        <p class="caption">3D printed top design</p>
+      </div>
+    </div>
+
+    <div class="flexrow">
+      <div style="width:45%; margin:10px;">
+        <img src="dress_skirt.png" alt="Skirt design" style="width:100%; margin-bottom:10px;">
+        <p class="caption">skirt design with attachment points</p>
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="dress_petal.png" alt="Petal mechanism" style="width:100%; margin-bottom:10px;">
+        <p class="caption">petal mechanism with servo motors</p>
+      </div>
+    </div>
+
+    <h4>petal mechanism</h4>
+    <p>i designed the petal mechanism in fusion 360. the petals need to be attached to the servo motors in a way that allows them to move naturally. i created a design with attachment points that can connect to the servo motor arm.</p>
+
+    <div class="flexrow">
+      <div style="width:45%; margin:10px;">
+        <img src="petal_fusion.png" alt="Petal design in Fusion 360" style="width:100%; margin-bottom:10px;">
+        <p class="caption">petal design in fusion 360</p>
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="petal_fusion2.png" alt="Petal mechanism detail" style="width:100%; margin-bottom:10px;">
+        <p class="caption">petal attachment mechanism</p>
+      </div>
+    </div>
+
+    <div class="center-row">
+      <img src="initial_belt.png" alt="Initial belt design" style="width:70%; margin:20px 0;">
+    </div>
+    <p class="caption">initial belt design with motor placement</p>
+
+    <h4>development plan</h4>
+    <p>for MVP0, i'm aiming to get an initial iteration of the petals on the skirt as well as the 3d printed top done. i
+    will also sew a small scaled-down version of the skirt to ensure my process can be used for the 
+    final skirt. i also included the initial fabrics that i'll be using for MVP0. once i've gotten
+    the electronics to work properly, i will use a different material to make the dress more sturdy.</p>
+
+    <h5>development schedule:</h5>
+    <div class="code-block">
+week 10/9-10/16:
+- attach servo motors and petals
+- print 3d printed fabric for the top
+
+week 10/16-10/23:
+- have working petals and initial 3d printed top 
+- finish MVP0
+
+week 10/23-10/30:
+- create inner lining 
+
+week 10/30-11/6:
+- sew inner liner of top
+
+week 11/6-11/13:
+- sew skirt
+
+week 11/13-11/20:
+- refine petal materials
+
+week 11/20-11/27:
+- integrate electronics into the dress
+
+week 11/27-12/4:
+- final assembly
+- testing and refinement
+
+week 12/4-12/10:
+- finished product!
+    </div>
+
+    <h4>bill of materials</h4>
+    <div class="code-block">
+- ESP32 microcontroller (x1)
+- Servo motors (x8-12)
+- PLA filament for prototyping
+- TPU flexible filament for final dress components
+- Fabric for skirt base
+- Conductive thread
+- Battery pack
+- Wires and connectors
+- Laser-cut acrylic for petal mechanisms
+- Cardboard for prototyping
+    </div>
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
 </html>
