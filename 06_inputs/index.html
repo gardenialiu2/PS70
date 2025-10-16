@@ -55,7 +55,8 @@
 <h4>assignment 2: thermistor temperature sensor</h4>
 
 <p>for this assignment, i used a thermistor to measure temperature and 
-  connected an LED that turns on when the temperature exceeds a threshold.</p>
+  connected an LED that turns on when the temperature exceeds a threshold. 
+using the template website code:</p>
 
 <h5>initial code:</h5>
 <div class="code-block">int ThermistorPin = 15;
@@ -116,9 +117,23 @@ void loop() {
 
 <h5>data collection:</h5>
 <p>i then plotted some additional points and created a line of best fit for mapping
-  the ESP32 readings to temperature in degrees fahrenheit. 
+  the ESP32 readings to temperature in degrees fahrenheit. i measured outside 
+  temperatures and plotted those readings as well. there is not a linear relationship
+  between the ESP32 readings and the temperature in degrees fahrenheit. we see that with higher
+  temperatures, we have lower ESP32 readings. there is more of a logarithmic relationship
+  between the two since as the temperature decreases, the ESP32 readings increase at a 
+  faster rate. 
 </p>
-TODO!
+
+<div class="flexrow">
+  <div style="width:35%; margin:10px;">
+    <img src="temp_data.png" alt="temperature data" style="width:100%; margin-bottom:10px;">
+  </div>
+  <div style="width:65%; margin:10px;">
+    <img src="temp_graph.png" alt="temperature graph" style="width:100%; margin-bottom:10px;">
+  </div>
+</div>
+
 
 
 <h5>improved code with class structure:</h5>
