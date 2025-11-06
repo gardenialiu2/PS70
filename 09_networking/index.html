@@ -24,19 +24,285 @@
 <div class="textcontainer">
 <p class="margin">   </p>
 
-<h3>Week 9: Radio, WiFi, Bluetooth (IoT)</h3>
+<h3>week 9: radio, wifi, bluetooth (IoT)</h3>
 
+<h4>assignment:</h4>
+
+i decided to incorporate a remote control into my final project. currently, the 
+buttons that power the petal motion are connected to the same ESP32 as the 
+servo motors. this makes it hard to start and stop, since the petals need 
+to be lifted for the buttons to be pressed. 
+
+i used ESP-NOW radio to connect the remote control to the ESP32. i maintained
+the two buttons i had previously, where if you press one button, the petals open and close. 
+when you press the other button, the petals open and close in a wave-like pattern. if you 
+press the button again, the petals stop.  
 
 <p class="margin">   </p>
-<div class="flexrow">
-  <a id="btn" href="wk9.zip" download>Download my files from this week!
-  </a>
+<h4>video demo</h4>
+<p>here's a video demonstration of the petals in action with the remote control:</p>
+
+<div class="video-container">
+  <video width="100%" controls>
+    <source src="petals.MOV" type="video/quicktime">
+    Your browser does not support the video tag.
+  </video>
 </div>
-<p class="margin">   </p>
 
-<h4>Assignment: [Program something with IOT]</h4>
+<p>my button code is shown below:</p>
+<div class="code-block">#include &lt;WiFi.h&gt;
+#include &lt;esp_now.h&gt;
+
+const int BTN_A = 18;  // NORMAL toggle
+const int BTN_B = 19;  // WAVE toggle
+
+// Receiver (servo board) MAC
+uint8_t receiverAddress[] = {0x38, 0x18, 0x2B, 0x8B, 0x76, 0x94};
+
+typedef struct __attribute__((packed)) {
+  uint8_t seq;   // changes every press so receiver sees repeats
+  uint8_t cmd;   // 1 = NORMAL toggle, 2 = WAVE toggle
+} Packet;
+
+bool lastA = HIGH, lastB = HIGH;
+uint8_t seq = 0;
+
+// New signature (ESP32 core 3.x / IDF5)
+void OnDataSent(const wifi_tx_info_t *tx_info, esp_now_send_status_t status) {
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Sent OK" : "Send FAIL");
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(BTN_A, INPUT_PULLUP);
+  pinMode(BTN_B, INPUT_PULLUP);
+
+  WiFi.mode(WIFI_STA);
+  if (esp_now_init() != ESP_OK) { Serial.println("ESP-NOW init failed!"); while(true){} }
+  esp_now_register_send_cb(OnDataSent);
+
+  esp_now_peer_info_t peer{};
+  memcpy(peer.peer_addr, receiverAddress, 6);
+  peer.channel = 0; peer.encrypt = false;
+  if (esp_now_add_peer(&peer) != ESP_OK) { Serial.println("Add peer failed"); while(true){} }
+
+  Serial.println("Button remote ready");
+}
+
+void sendCmd(uint8_t cmd) {
+  Packet p{ seq++, cmd };
+  // small reliability burst
+  for (int i=0;i<3;i++) esp_now_send(receiverAddress, (uint8_t*)&p, sizeof(p));
+}
+
+void loop() {
+  bool a = digitalRead(BTN_A);
+  bool b = digitalRead(BTN_B);
+
+  // press edge (pullups => HIGH->LOW)
+  if (lastA == HIGH && a == LOW) sendCmd(1);
+  if (lastB == HIGH && b == LOW) sendCmd(2);
+
+  lastA = a; lastB = b;
+  delay(20); // debounce
+}
+</div>
 
 
+<p>my servo code is shown below:</p>
+<div class="code-block">#include &lt;WiFi.h&gt;
+#include &lt;esp_now.h&gt;
+#include &lt;ESP32Servo.h&gt;
+
+// ---- Motion settings ----
+const int openPos = 125;
+const int closedPos = 180;
+const unsigned long moveInterval = 10;
+const unsigned long pauseDuration = 800;
+
+// ---- Buttons ----
+const int buttonPin     = 32; // NORMAL toggle
+const int waveButtonPin = 25; // WAVE toggle
+
+// ---- Wave settings ----
+const unsigned long waveGapMs = 500;
+
+const int deltaDeg = (closedPos - openPos);
+const unsigned long sweepTime = (unsigned long)deltaDeg * moveInterval;
+const unsigned long period    = 2UL * sweepTime + 2UL * pauseDuration;
+
+typedef struct __attribute__((packed)) {
+  uint8_t seq;   // distinguishes repeated presses
+  uint8_t cmd;   // 1=NORMAL toggle, 2=WAVE toggle
+} Packet;
+
+enum Mode { STOPPED, NORMAL, WAVE };
+volatile uint8_t rxCmd = 0;
+volatile uint8_t rxSeq = 255;
+
+Mode mode = STOPPED;
+unsigned long waveStartTime = 0;
+
+class PetalServo {
+public:
+  Servo servo;
+  int pos;
+  int step;
+  unsigned long lastMoveTime;
+  unsigned long lastPauseTime;
+  bool paused;
+
+  PetalServo(int pin)
+    : pos(closedPos), step(-1), lastMoveTime(0), lastPauseTime(0), paused(false)
+  {
+    servo.attach(pin, 500, 2400);
+    servo.setPeriodHertz(50);
+    servo.write(pos);
+  }
+
+  void updateNormal(bool enable) {
+    if (!enable) return;
+    unsigned long now = millis();
+
+    if (paused) {
+      if (now - lastPauseTime >= pauseDuration) paused = false;
+      return;
+    }
+
+    if (now - lastMoveTime >= moveInterval) {
+      pos += step;
+      if (pos < openPos)  pos = openPos;
+      if (pos > closedPos) pos = closedPos;
+
+      servo.write(pos);
+      lastMoveTime = now;
+
+      if (pos <= openPos || pos >= closedPos) {
+        step = -step;
+        paused = true;
+        lastPauseTime = now;
+      }
+    }
+  }
+};
+
+PetalServo petal1(18), petal2(19), petal3(21), petal4(23), petal5(33);
+
+bool debouncedFallingEdge(int pin, bool &stableState, bool &lastReading, unsigned long &lastChangeMs) {
+  const unsigned long debounceMs = 30;
+  bool reading = digitalRead(pin);
+  unsigned long now = millis();
+  if (reading != lastReading) { lastChangeMs = now; lastReading = reading; }
+  if ((now - lastChangeMs) > debounceMs && stableState != reading) {
+    stableState = reading;
+    return (stableState == LOW);
+  }
+  return false;
+}
+
+int waveAngleAt(unsigned long tMs) {
+  if (tMs < pauseDuration) return closedPos;  tMs -= pauseDuration;
+  if (tMs < sweepTime)     return closedPos - (int)((deltaDeg * (unsigned long long)tMs) / sweepTime);
+  tMs -= sweepTime;
+  if (tMs < pauseDuration) return openPos;    tMs -= pauseDuration;
+  return openPos + (int)((deltaDeg * (unsigned long long)tMs) / sweepTime);
+}
+
+void driveWave(PetalServo &p, int index, unsigned long now) {
+  const unsigned long offset = (unsigned long)index * waveGapMs;
+  const unsigned long t = (now - waveStartTime + offset) % period;
+  p.servo.write(waveAngleAt(t));
+}
+
+// New signature (ESP32 core 3.x / IDF5)
+void onRecv(const esp_now_recv_info_t *info, const uint8_t *data, int len) {
+  if (len < (int)sizeof(Packet)) return;
+  Packet p; memcpy(&p, data, sizeof(Packet));
+  // latch latest press
+  rxSeq = p.seq;
+  rxCmd = p.cmd;
+}
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(waveButtonPin, INPUT_PULLUP);
+  Serial.begin(115200);
+
+  ESP32PWM::allocateTimer(0);
+  ESP32PWM::allocateTimer(1);
+  ESP32PWM::allocateTimer(2);
+  ESP32PWM::allocateTimer(3);
+
+  WiFi.mode(WIFI_STA);
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("ESP-NOW init failed"); 
+    while(true){} 
+  }
+  esp_now_register_recv_cb(onRecv);
+
+  Serial.println("Servo receiver ready");
+}
+
+void loop() {
+  static bool stableNormal = HIGH, lastReadNormal = HIGH;
+  static bool stableWave   = HIGH, lastReadWave   = HIGH;
+  static unsigned long lastChangeNormal = 0, lastChangeWave = 0;
+
+  // Handle local buttons
+  if (debouncedFallingEdge(buttonPin, stableNormal, lastReadNormal, lastChangeNormal)) {
+    mode = (mode == NORMAL) ? STOPPED : NORMAL;
+    if (mode == WAVE) mode = NORMAL; // pressing NORMAL while in WAVE switches to NORMAL
+    if (mode == NORMAL) {
+      Serial.println("Mode: NORMAL"); 
+    } else {
+      Serial.println("Mode: STOPPED");
+    }
+  }
+  if (debouncedFallingEdge(waveButtonPin, stableWave, lastReadWave, lastChangeWave)) {
+    if (mode == WAVE) {
+      mode = STOPPED; 
+    } else {
+      mode = WAVE; 
+      waveStartTime = millis(); 
+    } 
+  }
+
+  // Handle remote presses (every unique seq)
+  static uint8_t lastHandledSeq = 255;
+  if (rxSeq != lastHandledSeq) {
+    lastHandledSeq = rxSeq;
+    if (rxCmd == 1) {                     // NORMAL toggle
+      mode = (mode == NORMAL) ? STOPPED : NORMAL;
+      if (mode == WAVE) mode = NORMAL;    // switch to NORMAL if coming from WAVE
+    } else if (rxCmd == 2) {              // WAVE toggle
+      if (mode == WAVE) { 
+        mode = STOPPED; 
+      } else { 
+        mode = WAVE; 
+        waveStartTime = millis(); 
+      }
+    }
+  }
+
+  // Drive motion
+  unsigned long now = millis();
+  if (mode == NORMAL) {
+    petal1.updateNormal(true);
+    petal2.updateNormal(true);
+    petal3.updateNormal(true);
+    petal4.updateNormal(true);
+    petal5.updateNormal(true);
+  } else if (mode == WAVE) {
+    driveWave(petal1, 0, now);
+    driveWave(petal2, 1, now);
+    driveWave(petal3, 2, now);
+    driveWave(petal4, 3, now);
+    driveWave(petal5, 4, now);
+  } // STOPPED: hold current angles
+
+  delay(3);
+}
+</div>
 
 
 </div>
