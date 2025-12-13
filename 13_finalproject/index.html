@@ -52,55 +52,54 @@
   <div class="textcontainer">
     <p class="margin"> </p>
 
-    <h3 class="cute-font">gardenia's dress</h3>
-
-    <div class="coming-soon-banner text-center">
-      <h4 class="cute-font">final product coming soon!</h4>
-    </div>
+    <h3 class="cute-font">bloom: gardenia's gardenia-inspired dress</h3>
 
     <div style="background-color: #f8f9fa; border-radius: 10px; padding: 15px; margin-bottom: 20px;">
       <h4>table of contents</h4>
       <ol style="list-style-type: decimal;">
+        <li><a href="#project-overview">project overview</a></li>
         <li><a href="#initial-designs">initial designs</a></li>
         <li><a href="#belt-servos">belt, servo motors, and initial cardboard petals</a></li>
         <li><a href="#initial-skirt">initial skirt</a></li>
         <li><a href="#plastic-petals-remote">plastic petals and remote control</a></li>
         <li><a href="#esp32-ribbon">esp32 to xiao and ribbon cable</a></li>
         <li><a href="#actual-dress">the actual dress</a></li>
+        <li><a href="#code-files">code files</a></li>
       </ol>
     </div>
-
-    <div class="flexrow" style="display:flex; justify-content:center;">
-      <div style="width:90%; margin:10px; text-align:center;">
-        <video controls preload="metadata" style="width:70%; max-width:100%; margin-bottom:10px; display:inline-block;">
+<div class="flexrow" style="display:flex; justify-content:center; flex-wrap:wrap;">
+          <div style="width:65%; min-width:280px; margin:10px; text-align:center;">
+        <video controls preload="metadata" style="width:100%; max-width:100%; margin-bottom:10px; display:inline-block;">
           <source src="demo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-    </div>
-
-    <div class="flexrow">
-      <div style="width:90%; margin:10px; text-align:center;">
-        <video controls preload="metadata" style="width:50%; margin-bottom:10px;">
-          <source src="IMG_1636.MOV" type="video/quicktime">
-          <source src="IMG_1636.MOV" type="video/mp4">
-          your browser does not support the video tag.
-        </video>
       </div>
-    </div>
 
+    <!-- project overview -->
+    <h4 id="project-overview">project overview</h4>
+    <p>hi! i'm named after a gardenia flower so i decided to design a gardenia-inspired dress that incorporates 3d printed elements and servo-controlled petals. the dress consists of a
+      satin corset top, a mesh maxi skirt, and an interactive flower petal top skirt layer. the servo motors within the flower petals are remote controlled using esp32now, a xiao, and an esp32. the 
+      petals move in and out like a flower blooming and closing. the petals can also move in a wave-like motion too. each petal is made from multiple layers of
+      fabric (canvas for structure and satin on top), and they are attached over a servo belt so that the electronics
+      are hidden inside the flower petals. full process video: </p>
+<div class="flexrow" style="display:flex; justify-content:center; flex-wrap:wrap;">
+  <div style="width:65%; min-width:280px; margin:10px; text-align:center;">
+    <a href="https://youtu.be/F1AgC09_3L4" target="_blank" rel="noopener noreferrer" style="display:inline-block; width:100%; max-width:100%; text-decoration:none;">
+      <img src="7.jpg" alt="full process video" style="width:100%; border-radius:10px; margin-bottom:8px;">
+      <div style="font-size:0.9rem;">click to watch the full process video on youtube</div>
+    </a>
+  </div>
+</div>
 
-
-    <h4>project overview</h4>
-    <p>i'm designing a dress that incorporates 3D printed elements and servo-controlled petals. the dress consists of a
-      3D printed top and a skirt with interactive flower petals. the flower petals will be controlled by servo motors,
-      creating movement and interactivity in the garment.</p>
     <h4>documentation</h4>
 
+    <!-- 1. initial designs -->
     <h5 id="initial-designs">1. initial designs</h5>
-    <p>i began by sketching the overall dress design, including the 3D printed top and the interactive skirt with
+    <p>i began by sketching the overall dress design, including a 3d printed top and the interactive skirt with
       servo-controlled petals. i designed the petal mechanism in fusion 360, creating attachment points that could
-      connect to both the servo motor arm and the petal itself.</p>
+      connect to both the servo motor arm and the petal itself, and experimented with different petal shapes and skirt
+      silhouettes before settling on the final direction. i did shift a little from my initial designs shown below: </p>
 
     <div class="flexrow">
       <div style="width:45%; margin:10px;">
@@ -129,12 +128,15 @@
       </div>
     </div>
 
+    <!-- 2. belt + servos -->
     <h5 id="belt-servos">2. belt, servo motors, and initial cardboard petals</h5>
-    <p>i designed the petal mechanism in fusion 360 and then 3d printed them. the petals need to be attached to the
-      servo motors in a way that allows them to move naturally. i created a design with attachment points that can
-      connect to the servo motor arm as well as the petal. i tested the servo motors individually first to ensure each
-      one functioned correctly since i had 5 servo motors all connecting to one esp32. after confirming individual
-      functionality, i connected all five servos and programmed them to work in coordination.</p>
+    <p>i designed the petal mechanism in fusion 360 and then 3d printed the mechanical parts that connect to the servo
+      horns. the petals needed to attach to the servo motors in a way that allowed them to move naturally, so i built a
+      small linkage with attachment points for both the servo arm and the petal. i tested each of the five servo motors
+      individually to confirm they worked before wiring them all to a single esp32 and programming coordinated motion
+      patterns. to mount everything on the body, i 3d printed flexible belt “fabric” that could hold the servos while
+      still bending around the waist, and then hand-sewed three pieces of this printed fabric together to make the belt
+      long enough.</p>
 
     <div class="flexrow">
       <div style="width:45%; margin:10px;">
@@ -143,47 +145,19 @@
       <div style="width:45%; margin:10px;">
         <img src="servo_complete.jpg" alt="Assembled servo mechanism" style="width:100%; margin-bottom:10px;">
       </div>
-    </div>
-
-    <div class="flexrow">
-      <div style="width:45%; margin:10px;">
-        <img src="initial_belt.png" alt="Initial belt design" style="width:100%; margin-bottom:10px;">
-      </div>
-      <div style="width:45%; margin:10px;">
-        <img src="belt.png" alt="Updated belt design" style="width:100%; margin-bottom:10px;">
-      </div>
-    </div>
-
-    <p>for my first iteration of the belt, i considered laser cutting cardboard to create a flexible structure that
-      could hold the servo motors. i designed a pattern that would allow for movement while maintaining structural
-      integrity. however, after testing this approach, i found that the cardboard was too stiff for comfortable wear and
-      didn't conform well to body movements.</p>
-
-    <div class="flexrow">
       <div style="width:45%; margin:10px;">
         <img src="printed_belt.jpg" alt="3D printed belt fabric" style="width:100%; margin-bottom:10px;">
       </div>
-      <div style="width:45%; margin:10px;">
-        <p>i then 3d printed flexible fabric for a belt to hold the servo motors, which offered better flexibility while
-          still providing necessary support for the electronics. i hand-sewed three fabric pieces together to make the
-          strip long enough for a belt.</p>
-      </div>
     </div>
 
-
+    <!-- 3. initial skirt -->
     <h5 id="initial-skirt">3. initial skirt and petals</h5>
-
-    <div class="flexrow">
-      <div style="width:45%; margin:10px;">
-        <img src="skirt_lining.jpg" alt="Proof of concept skirt" style="width:100%; margin-bottom:10px;">
-      </div>
-      <div style="width:45%; margin:10px;">
-        <p>
-          to test my design concept, i created a proof-of-concept skirt to visualize how the final piece would look. i
-          learned to use a sewing machine for this project, which was a valuable skill for creating both the prototype
-          and final garment</p>
-      </div>
-    </div>
+    <p>to test my design concept, i created a proof-of-concept skirt to visualize how the final piece would look and
+      used it as a playground for hanging early petals. i learned to use a sewing machine for this project, which was a
+      valuable skill for both the prototype and final garment. i first tested the servos with simple cardboard petals,
+      starting with one servo at a time and then scaling up to multiple servos working together. once all five servos
+      were connected, i refined the code so the petals opened in a coordinated, flower-like motion rather than moving
+      randomly.</p>
 
     <div class="flexrow">
       <div style="width:45%; margin:10px;">
@@ -191,47 +165,35 @@
           style="width:100%; margin-bottom:10px;">
       </div>
       <div style="width:45%; margin:10px;">
-        <img src="cardboard_petals1.jpg" alt="Multiple servos with cardboard petals"
-          style="width:100%; margin-bottom:10px;">
+        <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
+          <source src="IMG_9374 2.MOV" type="video/quicktime">
+          <source src="IMG_9374 2.MOV" type="video/mp4">
+          your browser does not support the video tag.
+        </video>
       </div>
+
     </div>
 
     <div class="flexrow">
+      <div style="width:45%; margin:10px;">
+        <img src="cardboard_petals1.jpg" alt="Multiple servos with cardboard petals"
+          style="width:100%; margin-bottom:10px;">
+      </div>
       <div style="width:45%; margin:10px;">
         <img src="cardboard_petals_final.jpg" alt="Final cardboard petal assembly"
           style="width:100%; margin-bottom:10px;">
       </div>
-      <div style="width:45%; margin:10px;">
-        <p>after testing individual servos, i connected them all to work together. the coordination of all five servos
-          was essential for creating synchronized petal movements. this testing phase helped me refine the control
-          software for the final design.</p>
-      </div>
     </div>
 
+    <!-- 4. plastic petals + remote -->
     <h5 id="plastic-petals-remote">4. plastic petals and remote control</h5>
-    <p>the plastic petals were more durable and consistent than the cardboard ones, allowing for more reliable movement
-      and a more polished appearance. to make the dress interactive, i added a remote control system that allows the
-      wearer to control the movement of the petals. details about the remote control can be found on my <a
-        href="../07_input/index.html">week 7 page</a>. the completed belt assembly integrated the electronics with the
-      3D printed fabric, allowing it to conform to the body while supporting the weight of the components.</p>
+    <p>i then switched to 3d printing the petals since plastic petals were more durable and consistent than the cardboard ones. to make the dress interactive, i added a remote control system that lets the wearer
+      trigger different petal movement patterns; the input details and testing are documented on my <a
+        href="../07_input/index.html">week 7 page</a>. for my minimum viable product (mvp0), i used tape to temporarily
+      assemble the skirt components, just to verify that the electronics, belt, and petals all worked together on the
+      body. this taped-together version confirmed that the concept was viable and that the electronics and fabric could
+      be integrated into a wearable piece. once that was done, i replaced the tape by hand-sewing the servos to the belt. </p>
 
-    <p>for my minimum viable product (mvp0), i used tape to temporarily assemble the skirt components. this allowed me
-      to test the overall functionality and appearance before committing to more permanent construction methods. the
-      mvp0 demonstrated that the concept was viable and that i could successfully integrate electronics with fabric.</p>
-    <div class="flexrow">
-      <div style="width:45%; margin:10px;">
-        <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
-          <source src="IMG_9609.MOV" type="video/quicktime">
-          <source src="IMG_9609.MOV" type="video/mp4">
-          your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-    <div class="flexrow">
-      <div style="width:45%; margin:10px;">
-        <img src="printed_petals.jpg" alt="3D printed petals" style="width:100%; margin-bottom:10px;">
-      </div>
-    </div>
 
     <div class="flexrow">
       <div style="width:45%; margin:10px;">
@@ -240,11 +202,7 @@
       <div style="width:45%; margin:10px;">
         <img src="under_belt.JPG" alt="Underside of belt" style="width:100%; margin-bottom:10px;">
       </div>
-    </div>
-
-
-    <div class="flexrow">
-      <div style="width:45%; margin:10px;">
+            <div style="width:45%; margin:10px;">
         <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
           <source src="IMG_0264.MOV" type="video/quicktime">
           <source src="IMG_0264.MOV" type="video/mp4">
@@ -253,14 +211,14 @@
       </div>
     </div>
 
-
+    <!-- 5. esp32 + ribbon -->
     <h5 id="esp32-ribbon">5. esp32 to xiao and ribbon cable</h5>
-    <p>to make the electronics more reliable and compact, i switched from using individual wires to ribbon cables and
-      soldered the connections. I also switched from using the larger esp32 to the smaller xiao esp32c3 microcontroller.
-      i was able to control all five petals with synchronized movements, creating an interactive garment. switching to
-      ribbon cables made the wiring more organized and reliable, while also making the dress more comfortable to wear.
-      the xiao esp32c3 is much smaller than the standard esp32, making it ideal for wearable projects where space and
-      weight are important considerations.</p>
+    <p>all of the servo motors were connected to an esp32. to make the electronics more reliable and compact, i switched from using individual jumper wires to ribbon cables
+      and soldered the connections. i also swapped the larger esp32 for the smaller xiao esp32c3 microcontroller, which
+      freed up space and made the belt more comfortable. with the new wiring, i could still control all five petals with
+      synchronized movements, but the wiring was much cleaner and less likely to snag on fabric. the ribbon cables were
+      sewn into place and routed along the belt so that they stayed flat against the body, and the xiao esp32c3 sat
+      neatly with the rest of the electronics.</p>
 
     <div class="flexrow">
       <div style="width:45%; margin:10px;">
@@ -269,46 +227,29 @@
       <div style="width:45%; margin:10px;">
         <img src="soldered_xiao.jpg" alt="Soldered XIAO ESP32C3" style="width:100%; margin-bottom:10px;">
       </div>
-    </div>
-
-    <h5 id="actual-dress">6. the actual dress</h5>
-
-    <p>once all of the electronics were set up, i started working on the actual dress. i chose three types of fabric for
-      different parts of the dress:</p>
-    <ul>
-      <li>a satin outer layer for aesthetics</li>
-      <li>a canvas material for structure</li>
-      <li>a stretchy mesh for the skirt</li>
-    </ul>
-
-    <p>i began by making the corset. first, i plastic wrapped and taped the mannequin to create a form-fitting template.
-      i then used that as a guide for cutting my fabric pieces. after cutting the pieces, i glued the satin on top of
-      the canvas for each section and then sewed them all together. i still need to clean up the edges and figure out
-      the back closure.</p>
-
-    <div class="flexrow">
       <div style="width:45%; margin:10px;">
+        <img src="printed_petals.jpg" alt="3D printed petals" style="width:100%; margin-bottom:10px;">
+      </div>
+            <div style="width:45%; margin:10px;">
         <img src="current_dress.jpg" alt="Current dress progress" style="width:100%; margin-bottom:10px;">
       </div>
-      <div style="width:45%; margin:10px;">
+            
+    </div>
+
+    <div class="flexrow">
+<div style="width:45%; margin:10px;">
         <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
-          <source src="IMG_1216.MOV" type="video/quicktime">
-          <source src="IMG_1216.MOV" type="video/mp4">
+          <source src="IMG_9609.MOV" type="video/quicktime">
+          <source src="IMG_9609.MOV" type="video/mp4">
           your browser does not support the video tag.
         </video>
       </div>
-    </div>
-
-    <p>additional progress videos showing different aspects of the dress construction:</p>
-
-    <div class="flexrow">
       <div style="width:45%; margin:10px;">
         <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
           <source src="IMG_1057.MOV" type="video/quicktime">
           <source src="IMG_1057.MOV" type="video/mp4">
           your browser does not support the video tag.
         </video>
-        <p>soldering the ribbon cable connections</p>
       </div>
       <div style="width:45%; margin:10px;">
         <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
@@ -316,26 +257,52 @@
           <source src="IMG_1153.MOV" type="video/mp4">
           your browser does not support the video tag.
         </video>
-        <p>testing the wiring with the servos</p>
+      </div>
+    </div>
+
+    <!-- 6. actual dress -->
+    <h5 id="actual-dress">6. the actual dress</h5>
+    <p>once all of the electronics were set up, i started working on the actual dress. i chose a satin outer layer for
+      aesthetics, a canvas layer for structure, and a stretchy mesh layer for the skirt and back ties so the dress could
+      move and still be adjustable. to build the corset, i plastic wrapped and taped the mannequin to create a
+      form-fitting template, then used that as a guide for cutting my fabric pieces. i glued satin on top of the canvas
+      panels and sewed them together on the machine to create the base corset, then cleaned up the edges and finished
+      the seams so it would be comfortable and neat. instead of leaving the back open, i added some strips of mesh material
+      as a tie so the corset could be tightened and adjusted. after finishing the corset base, i moved on to the petals
+      that sit over the servo belt: each petal has a structural canvas layer and a satin top layer, sewn together on the
+      machine for clean edges. i used a combination of hot glue and hand sewing to attach these petals to the belt that
+      holds all the servo motors, arranging them into two overlapping layers to create a fuller flower effect around the
+      waist. as a final step, i hid all of the motors inside the volume of the petals so that the mechanics are
+      invisible when the dress is worn, and attached the finished petal belt securely to the corset so the petals look
+      like they grow directly out of the bodice. i also hid the portable charger within one of the petals. </p>
+
+        <div class="flexrow">
+      <div style="width:45%; margin:10px;">
+        <img src="1.png" alt="petals" style="width:100%; margin-bottom:10px;">
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="2.png" alt="petals" style="width:100%; margin-bottom:10px;">
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="3.png" alt="petals" style="width:100%; margin-bottom:10px;">
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="4.png" alt="petals" style="width:100%; margin-bottom:10px;">
       </div>
     </div>
 
     <div class="flexrow">
       <div style="width:45%; margin:10px;">
-        <video controls preload="metadata" style="width:100%; margin-bottom:10px;">
-          <source src="IMG_9374 2.MOV" type="video/quicktime">
-          <source src="IMG_9374 2.MOV" type="video/mp4">
-          your browser does not support the video tag.
-        </video>
-        <p>early servo motor testing</p>
+        <img src="5.png" alt="petals" style="width:100%; margin-bottom:10px;">
+      </div>
+      <div style="width:45%; margin:10px;">
+        <img src="6.png" alt="petals" style="width:100%; margin-bottom:10px;">
       </div>
     </div>
 
-    <h4>next up</h4>
-    <p>to completely finish the dress, i need to sew the skirt, corset, and petal coverings. i may
-      also make the remote control a little more visually appealing. the electronic components of the project are
-      already assembled and tested.
-      i also need to incorporate a battery pack and finalize the wiring harness.</p>
+    <!-- 7. code files -->
+    <h5 id="code-files">7. code files</h5>
+    <p>the code that controls the petals and remote lives in separate files: <a href="servo_petals.ino">petal_control_code.ino</a> (main servo and petal motion code) and <a href="remote.ino">remote_receiver_code.ino</a> (remote control and input handling). </p>
 
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
